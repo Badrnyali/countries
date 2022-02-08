@@ -223,7 +223,7 @@ function showCountry(denonym) {
     .catch((err) => console.log(err));
 }
 
-function checkMode() {
+function checkMode(e) {
   //Checking and Setting dark mode
   let allCardsContainer = document.querySelector(".container");
     if (e.parentElement.classList.contains("header_div")) {
