@@ -218,27 +218,25 @@ function showCountry(denonym) {
   </div>
   </div>`;
       document.querySelector("body").innerHTML += countryHtml;
-
-      checkMode();
+    document.addEventListener("click", (e) =>{checkMode(e.target)})
     })
     .catch((err) => console.log(err));
 }
 
 function checkMode() {
   //Checking and Setting dark mode
-  let changeModeButton = document.querySelector("header div");
-  changeModeButton.addEventListener("click", (e) => {
-    document.body.classList.toggle("body_darkmode");
+  let allCardsContainer = document.querySelector(".container");
+    if (e.parentElement.classList.contains("header_div")) {
+      document.body.classList.toggle("body_darkmode");
     document.querySelector("header").classList.toggle("light_darkmode");
-  });
+      return;
+    }
 
   //Back button listener
-  let allCardsContainer = document.querySelector(".container");
-  let backButton = document.querySelector(".back");
-  backButton.addEventListener("click", (e) => {
-    e.target.parentElement.parentElement.remove();
-    allCardsContainer.classList.remove("inactive");
-  });
+  if (e.parentElement.classList.contains("back")) {
+      e.parentElement.parentElement.remove();
+      allCardsContainer.classList.remove("inactive");
+      return;
+    }
+ 
 }
-
-// TODO : Deposit on github
